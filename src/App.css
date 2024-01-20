@@ -6,7 +6,13 @@
 
     box-shadow: 0 0 8px 1px #DEDEDE;
     border-radius: 10px;
-    width: 35vw;
+    width: 450px;
     padding: 40px;
     box-sizing: border-box;
+}
+
+@media only screen and (max-width: 600px){
+    .App{
+        width: 300px;
+    }
 }
