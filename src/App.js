@@ -1,34 +1,21 @@
-import './App.css'
+import React, { useState } from 'react';
+import Login from './Login';
+import Profile from './Profile';
+import './App.css';
 
+const App = () => {
+  const [isLogged, setIsLogged] = useState(null);
 
-function App() {
+  const handleLogin = (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    setIsLogged(user);
+  };
+
   return (
-    <div className="App">
-
-      <div className="welcome-back">
-        <span>Welcome back! 👋</span>
-      </div>
-
-      <header>
-        <span>Sign in to your account</span>
-      </header>
-
-      <form>
-        <div className="form-group">
-          <label htmlFor="email">Your email</label>
-          <input type="email" id="email"/>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password"/>
-        </div>
-
-        <button type="submit">CONTINUE</button>
-      </form>
-
+    <div className='App'>
+      {isLogged ? <Profile user={isLogged}/> : <Login onLogin={handleLogin}/>}
     </div>
   );
-}
+};
 
 export default App;
